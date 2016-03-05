@@ -1,7 +1,5 @@
 package info.ernestas.tddplayground.model;
 
-import info.ernestas.tddplayground.TransactionType;
-
 public class Transaction {
 
     private TransactionType transactionType;

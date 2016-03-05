@@ -1,10 +1,9 @@
 package info.ernestas.tddplayground.service;
 
 import info.ernestas.tddplayground.model.Account;
+import info.ernestas.tddplayground.model.AccountType;
 import info.ernestas.tddplayground.model.Customer;
 import info.ernestas.tddplayground.model.TransactionsStatement;
-import info.ernestas.tddplayground.service.AccountService;
-import info.ernestas.tddplayground.service.CustomerService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,7 +27,7 @@ public class CustomerServiceTest {
     public void testGetTransactionStatement_withNoTransactions() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        Account account = accountService.openAccount(customer);
+        accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         List<TransactionsStatement> transactionsStatements = customerService.getTransactionStatement(customer);
 
@@ -39,7 +38,7 @@ public class CustomerServiceTest {
     public void testGetTransactionStatement_withThreeTransactionsAndOneAccount() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        Account account = accountService.openAccount(customer);
+        Account account = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
         accountService.deposit(customer, account, 500);
         accountService.withdraw(customer, account, 50);
         accountService.withdraw(customer, account, 50);
@@ -54,11 +53,11 @@ public class CustomerServiceTest {
     public void testGetTransactionStatement_withThreeTransactionsAndTwoAccounts() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        Account account1 = accountService.openAccount(customer);
+        Account account1 = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
         accountService.deposit(customer, account1, 500);
         accountService.withdraw(customer, account1, 50);
         accountService.withdraw(customer, account1, 50);
-        Account account2 = accountService.openAccount(customer);
+        Account account2 = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
         accountService.deposit(customer, account2, 100);
         accountService.withdraw(customer, account2, 50);
         accountService.withdraw(customer, account2, 50);

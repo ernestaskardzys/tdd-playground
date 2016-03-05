@@ -1,4 +1,4 @@
-package info.ernestas.tddplayground;
+package info.ernestas.tddplayground.model;
 
 public enum TransactionType {
     DEPOSIT, WITHDRAW

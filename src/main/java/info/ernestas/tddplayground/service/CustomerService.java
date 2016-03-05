@@ -1,6 +1,6 @@
 package info.ernestas.tddplayground.service;
 
-import info.ernestas.tddplayground.TransactionType;
+import info.ernestas.tddplayground.model.TransactionType;
 import info.ernestas.tddplayground.model.Account;
 import info.ernestas.tddplayground.model.Customer;
 import info.ernestas.tddplayground.model.Transaction;
