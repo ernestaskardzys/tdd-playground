@@ -1,0 +1,19 @@
+Create a simple String calculator with a method int Add(string numbers)
+Task: return a sum of "0" -> 0
+Task: return a sum of "1" -> 1
+Task: return a sum of "2" -> 2
+Task: return a sum of "1,3" -> 4
+Task: return a sum of "50,80,5" -> 135
+Task: Allow the Add method to handle an unknown amount of numbers. "1,2,3,4,5,6" -> 21
+--- Check here!
+Task: When negative number is passed - throw an exception "Negative numbers are not allowed" - and the negative that was passed. "1,-2,8,6" -> Exception
+"-10" -> Exception
+Task: Support different one symbol delimiters. Format: "//[delimiter] [numbers…]". "//= 8=3=1" -> 12
+Task: "//> 9>5>1" -> 15
+Task: "//M 1M-8M7" -> Exception
+Task: Numbers higher than 1000 should be ignored:
+	"9,1008,3" -> 12
+	"//] 1]3]4]1000" -> 8
+	"//; 7;4;-6" -> Exception
+
+Additional task: Support delimiters with multiple symbols.
