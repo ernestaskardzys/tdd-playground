@@ -11,6 +11,8 @@ public class Account {
 
     private List<Transaction> transactions = new ArrayList<>();
 
+    private AccountType accountType;
+
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -54,5 +56,13 @@ public class Account {
         Account account = (Account) obj;
 
         return accountNumber.equals(account.getAccountNumber());
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     }
 }

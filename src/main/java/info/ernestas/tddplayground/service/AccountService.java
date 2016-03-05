@@ -1,6 +1,7 @@
 package info.ernestas.tddplayground.service;
 
-import info.ernestas.tddplayground.TransactionType;
+import info.ernestas.tddplayground.model.AccountType;
+import info.ernestas.tddplayground.model.TransactionType;
 import info.ernestas.tddplayground.model.Account;
 import info.ernestas.tddplayground.model.Customer;
 import info.ernestas.tddplayground.model.Transaction;
@@ -16,9 +17,10 @@ public class AccountService {
 
     private Map<Customer, List<Account>> accounts = new HashMap<>();
 
-    public Account openAccount(Customer customer) {
+    public Account openAccount(Customer customer, AccountType accountType) {
         Account account = new Account();
         account.setAccountNumber(getAccountNumber());
+        account.setAccountType(accountType);
 
         if (accounts.containsKey(customer)) {
             // Client has an account already

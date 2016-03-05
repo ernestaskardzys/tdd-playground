@@ -1,9 +1,9 @@
 package info.ernestas.tddplayground.service;
 
-import info.ernestas.tddplayground.TransactionType;
+import info.ernestas.tddplayground.model.TransactionType;
 import info.ernestas.tddplayground.model.Account;
+import info.ernestas.tddplayground.model.AccountType;
 import info.ernestas.tddplayground.model.Customer;
-import info.ernestas.tddplayground.service.AccountService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class AccountServiceTest {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
 
-        Account account = accountService.openAccount(customer);
+        Account account = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         assertNotNull(account.getAccountNumber());
     }
@@ -36,9 +36,9 @@ public class AccountServiceTest {
     public void testOpenAccount_forFirstUser_whenClientAlreadyHasAnAccount() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        accountService.openAccount(customer);
+        accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
-        Account account = accountService.openAccount(customer);
+        Account account = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         assertNotNull(account.getAccountNumber());
     }
@@ -48,7 +48,7 @@ public class AccountServiceTest {
         Customer customer = new Customer();
         customer.setName("John Doe");
 
-        Account account = accountService.openAccount(customer);
+        Account account = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         assertNotNull(account.getAccountNumber());
     }
@@ -57,7 +57,7 @@ public class AccountServiceTest {
     public void testDepositFunds() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        Account account = accountService.openAccount(customer);
+        Account account = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         accountService.deposit(customer, account, 100);
 
@@ -70,7 +70,7 @@ public class AccountServiceTest {
     public void testDepositFunds_multipleTimes() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        Account account = accountService.openAccount(customer);
+        Account account = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         accountService.deposit(customer, account, 100);
         accountService.deposit(customer, account, 30);
@@ -89,7 +89,7 @@ public class AccountServiceTest {
     public void testWithdrawFunds_multipleTimes() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        Account account = accountService.openAccount(customer);
+        Account account = accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         accountService.deposit(customer, account, 100);
         accountService.withdraw(customer, account, 20);
@@ -112,8 +112,8 @@ public class AccountServiceTest {
     public void testGetAccountsOfTheCustomer() {
         Customer customer = new Customer();
         customer.setName("Ernestas Kardzys");
-        accountService.openAccount(customer);
-        accountService.openAccount(customer);
+        accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
+        accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
 
         List<Account> accounts = accountService.getCustomerAccounts(customer);
 
@@ -130,4 +130,41 @@ public class AccountServiceTest {
 
         assertEquals(0, accounts.size());
     }
+
+    @Test
+    public void testOpenCheckingAccount() {
+        Customer customer = new Customer();
+        customer.setName("Ernestas Kardzys");
+        accountService.openAccount(customer, AccountType.CHECKING_ACCOUNT);
+
+        List<Account> accounts = accountService.getCustomerAccounts(customer);
+
+        assertEquals(1, accounts.size());
+        assertEquals(AccountType.CHECKING_ACCOUNT, accounts.get(0).getAccountType());
+    }
+
+    @Test
+    public void testOpenSavingsAccount() {
+        Customer customer = new Customer();
+        customer.setName("Ernestas Kardzys");
+        accountService.openAccount(customer, AccountType.SAVINGS_ACCOUNT);
+
+        List<Account> accounts = accountService.getCustomerAccounts(customer);
+
+        assertEquals(1, accounts.size());
+        assertEquals(AccountType.SAVINGS_ACCOUNT, accounts.get(0).getAccountType());
+    }
+
+    @Test
+    public void testOpenMaxiSavingsAccount() {
+        Customer customer = new Customer();
+        customer.setName("Ernestas Kardzys");
+        accountService.openAccount(customer, AccountType.MAXI_SAVINGS_ACCOUNT);
+
+        List<Account> accounts = accountService.getCustomerAccounts(customer);
+
+        assertEquals(1, accounts.size());
+        assertEquals(AccountType.MAXI_SAVINGS_ACCOUNT, accounts.get(0).getAccountType());
+    }
+
 }
