@@ -1,7 +1,9 @@
 package info.ernestas.tddplayground.service;
 
+import info.ernestas.tddplayground.TransactionType;
 import info.ernestas.tddplayground.model.Account;
 import info.ernestas.tddplayground.model.Customer;
+import info.ernestas.tddplayground.model.Transaction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +35,7 @@ public class AccountService {
     public void deposit(Customer customer, Account account, int amount) {
         Account customerAccount = getCustomerAccount(customer, account);
         if (customerAccount != null) {
+            logTransaction(amount, customerAccount, TransactionType.DEPOSIT);
             customerAccount.setAmount(customerAccount.getAmount() + amount);
         }
     }
@@ -49,8 +52,24 @@ public class AccountService {
     public void withdraw(Customer customer, Account account, int amount) {
         Account customerAccount = getCustomerAccount(customer, account);
         if (customerAccount != null) {
+            logTransaction(amount, customerAccount, TransactionType.WITHDRAW);
             customerAccount.setAmount(customerAccount.getAmount() - amount);
         }
+    }
+
+    public List<Account> getCustomerAccounts(Customer customer) {
+        if (accounts.containsKey(customer)) {
+            return accounts.get(customer);
+        }
+
+        return new ArrayList<>();
+    }
+
+    private void logTransaction(int amount, Account customerAccount, TransactionType type) {
+        Transaction transaction = new Transaction();
+        transaction.setTransactionAmount(amount);
+        transaction.setTransactionType(type);
+        customerAccount.getTransactions().add(transaction);
     }
 
     private String getAccountNumber() {
