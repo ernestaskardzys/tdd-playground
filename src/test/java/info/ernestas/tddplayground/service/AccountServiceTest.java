@@ -1,8 +1,10 @@
-package info.ernestas.tddplayground;
+package info.ernestas.tddplayground.service;
 
+import info.ernestas.tddplayground.TransactionType;
 import info.ernestas.tddplayground.model.Account;
 import info.ernestas.tddplayground.model.Customer;
 import info.ernestas.tddplayground.service.AccountService;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -60,7 +62,7 @@ public class AccountServiceTest {
         accountService.deposit(customer, account, 100);
 
         assertEquals(100, accountService.getBalance(customer, account));
-        assertEquals(TransactionType.DEPOSIT, account.getTransactions().get(0).getTransactionType());
+        Assert.assertEquals(TransactionType.DEPOSIT, account.getTransactions().get(0).getTransactionType());
         assertEquals(100, account.getTransactions().get(0).getTransactionAmount());
     }
 

@@ -1,4 +1,4 @@
-package info.ernestas.tddplayground;
+package info.ernestas.tddplayground.service;
 
 import info.ernestas.tddplayground.model.Account;
 import info.ernestas.tddplayground.model.Customer;
