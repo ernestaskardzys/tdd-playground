@@ -1,10 +1,15 @@
 package info.ernestas.tddplayground.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
 
     private Integer amount = 0;
 
     private String accountNumber;
+
+    private List<Transaction> transactions = new ArrayList<>();
 
     public String getAccountNumber() {
         return accountNumber;
@@ -20,6 +25,14 @@ public class Account {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     @Override
