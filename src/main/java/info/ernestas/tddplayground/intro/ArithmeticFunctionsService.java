@@ -15,6 +15,10 @@ public class ArithmeticFunctionsService {
     }
 
     public double divide(double firstNumber, double secondNumber) {
+        if (secondNumber == 0.0) {
+            throw new RuntimeException("Division by zero!");
+        }
+
         return firstNumber / secondNumber;
     }
 
