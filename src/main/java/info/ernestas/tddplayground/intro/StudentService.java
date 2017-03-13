@@ -5,6 +5,10 @@ import info.ernestas.tddplayground.model.Student;
 public class StudentService {
 
     public String getFullName(Student student) {
+        if (student == null) {
+            return "";
+        }
+
         return student.getName() + " " + student.getSurname();
     }
 
