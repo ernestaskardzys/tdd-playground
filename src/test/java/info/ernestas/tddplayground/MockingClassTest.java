@@ -1,28 +1,27 @@
 package info.ernestas.tddplayground;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-/**
- *
- * @author Ernestas.Kardzys
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
+
 public class MockingClassTest {
     
     @Test
     public void testSomething() {
         MockingClass testClass = new MockingClass();
-        Assert.assertTrue(testClass.testIfTrue());
+        assertTrue(testClass.testIfTrue());
     }
     
     @Test
     public void testWithMockito() {
         OtherClass otherClass = Mockito.mock(OtherClass.class);
-        Mockito.when(otherClass.getResult()).thenReturn("MockedResult");
+        when(otherClass.getResult()).thenReturn("MockedResult");
         
         MockingClass testClass = new MockingClass(otherClass);
-        Assert.assertEquals("MockedResult", testClass.getResultFromOtherClass());
+        assertEquals("MockedResult", testClass.getResultFromOtherClass());
     }
     
 }

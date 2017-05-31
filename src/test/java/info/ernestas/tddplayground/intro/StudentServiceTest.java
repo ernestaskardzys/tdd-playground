@@ -1,9 +1,10 @@
 package info.ernestas.tddplayground.intro;
 
 import info.ernestas.tddplayground.model.Student;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class StudentServiceTest {
 
@@ -21,13 +22,13 @@ public class StudentServiceTest {
         student.setSurname("Kardzys");
 
         String result = studentService.getFullName(student);
-        Assert.assertEquals("Ernestas Kardzys", result);
+        assertEquals("Ernestas Kardzys", result);
     }
 
     @Test
     public void testGetFullName_withNull_returnAnEmptyString() {
         String result2 = studentService.getFullName(null);
-        Assert.assertEquals("", result2);
+        assertEquals("", result2);
     }
 
     @Test
@@ -36,7 +37,7 @@ public class StudentServiceTest {
         student.setAverage(4.5);
 
         double result = studentService.getScholarship(student);
-        Assert.assertEquals(0.0, result, 0.01);
+        assertEquals(0.0, result, 0.01);
     }
 
     @Test
@@ -45,7 +46,7 @@ public class StudentServiceTest {
         student.setAverage(8.5);
 
         double result = studentService.getScholarship(student);
-        Assert.assertEquals(2.0, result, 0.01);
+        assertEquals(2.0, result, 0.01);
     }
 
 }
