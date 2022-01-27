@@ -1,22 +1,22 @@
 package info.ernestas.tddplayground.service;
 
-import java.util.List;
-
 import info.ernestas.tddplayground.model.Account;
 import info.ernestas.tddplayground.model.AccountType;
 import info.ernestas.tddplayground.model.Customer;
 import info.ernestas.tddplayground.model.TransactionType;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class AccountServiceTest {
 
     private AccountService accountService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         accountService = new AccountService();
     }
