@@ -1,15 +1,16 @@
 package info.ernestas.tddplayground;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 
     private Calculator calculator;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         calculator = new Calculator();
     }
@@ -44,9 +45,9 @@ public class CalculatorTest {
         assertEquals(21, calculator.add("1,2,3,4,5,6"));
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void testAdd_whenPassedANegativeNumber_shouldThrowAnException() {
-        calculator.add("1,2,-3,4,5,6");
+        assertThrows(RuntimeException.class, () -> calculator.add("1,2,-3,4,5,6"));
     }
 
     @Test

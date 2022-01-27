@@ -19,18 +19,18 @@ public class Calculator {
         if (number.contains(separator)) {
             int result = 0;
             for (String digit : digits) {
-                result += Integer.valueOf(digit);
+                result += Integer.parseInt(digit);
             }
 
             return result;
         }
 
-        return Integer.valueOf(number);
+        return Integer.parseInt(number);
     }
 
     private void checkForNegativeNumbers(String[] digits) {
         for (String digit : digits) {
-            int n = Integer.valueOf(digit);
+            int n = Integer.parseInt(digit);
             if (n < 0) {
                 throw new RuntimeException("Negative number is not allowed: " + n);
             }

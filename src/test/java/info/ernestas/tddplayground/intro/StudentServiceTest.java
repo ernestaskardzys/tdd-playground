@@ -1,16 +1,16 @@
 package info.ernestas.tddplayground.intro;
 
 import info.ernestas.tddplayground.model.Student;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StudentServiceTest {
 
     private StudentService studentService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         studentService = new StudentService();
     }
