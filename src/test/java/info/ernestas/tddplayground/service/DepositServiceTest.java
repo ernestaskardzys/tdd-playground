@@ -5,14 +5,12 @@ import info.ernestas.tddplayground.model.AccountType;
 import info.ernestas.tddplayground.model.Customer;
 import info.ernestas.tddplayground.model.Deposit;
 import info.ernestas.tddplayground.model.DepositPart;
-import info.ernestas.tddplayground.model.InterestRateType;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DepositServiceTest {
 
@@ -20,7 +18,7 @@ public class DepositServiceTest {
 
     private InterestService interestService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         accountService = new AccountService();
         interestService = new InterestService();

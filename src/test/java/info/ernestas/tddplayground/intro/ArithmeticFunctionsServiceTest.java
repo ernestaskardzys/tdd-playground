@@ -1,15 +1,16 @@
 package info.ernestas.tddplayground.intro;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ArithmeticFunctionsServiceTest {
 
     private ArithmeticFunctionsService service;
 
-    @Before
+    @BeforeEach
     public void setup() {
         service = new ArithmeticFunctionsService();
     }
@@ -32,9 +33,9 @@ public class ArithmeticFunctionsServiceTest {
         assertEquals(-5, result2, 0.01);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void testDivide() {
-        service.divide(-10, 0);
+        assertThrows(RuntimeException.class, () -> service.divide(-10, 0));
     }
 
 }
